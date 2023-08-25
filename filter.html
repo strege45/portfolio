@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.1.1/crypto-js.min.js"></script>
+     <!--  Bootstrap css file  -->
+     <link rel="stylesheet" href="./css/bootstrap.min.css">
+
+
+  <title>My Projects</title>
+  <style>
+    table {
+      border-collapse: collapse;
+      width: 100%;
+    }
+
+    thead {
+      background-color: #ddd;
+    }
+
+    th, td {
+      text-align: left;
+      padding: 8px;
+    }
+
+    tr:nth-child(even) {
+      background-color: #f2f2f2;
+    }
+
+    img {
+      max-width: 100px;
+      max-height: 100px;
+    }
+  </style>
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
+  <script>
+    var app = angular.module('myApp', []);
+    app.controller('myCtrl', function($scope) {
+      $scope.projects = [
+        {
+          id: 1,
+          title: 'Prabalya website',
+          description: 'sport's fest website (NMIMS NAVI MUMBAI)',
+          image: 'https://firebasestorage.googleapis.com/v0/b/portfolio-project2.appspot.com/o/messbuddy.png?alt=media&token=f92afe85-cc9c-4ec0-baee-b0c3d88aa6d4'
+        },
+        {
+          id: 2,
+          title: 'Movie Recommendation system',
+          description: 'This is created using streamlit python library',
+        },
+       
+      ];
+    });
+  </script>
+</head>
+<body ng-app="myApp" ng-controller="myCtrl">
+
+
+    <nav class="navbar navbar-expand-lg bg-body-tertiary">
+        <div class="container-fluid">
+          <a class="navbar-brand" href="./Index.html">Portfolio</a>
+         
+          
+        </div>
+      </nav>
+
+
+
+  <input type="text" ng-model="search" placeholder="Search...">
+  <table>
+    <thead>
+      <tr>
+        <th>Sr No.</th>
+        <th>Project ID</th>
+        <th>Title</th>
+        <th>Description</th>
+        <th>Image</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr ng-repeat="project in projects | filter:search">
+        <td>{{$index+1}}</td>
+        <td>{{project.id}}</td>
+        <td>{{project.title}}</td>
+        <td>{{project.description}}</td>
+        <td><img ng-src="{{project.image}}"></td>
+      </tr>
+    </tbody>
+  </table>
+</body>
+</html>
